@@ -11,8 +11,5 @@ public class HomeController {
     public String goHome() {
         return "home";
     }
-    @GetMapping("design")
-    public String goDesign(){
-        return "design";
-    }
+
 }
