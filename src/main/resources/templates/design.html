@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>pancake cloud</title>
-    <link th:href="@{/images/styles.css}">
+    <link rel="stylesheet" th:href="@{/images/styles.css}">
 </head>
 <body>
     <h1>Design your pancake</h1>
     <img th:src="@{/images/PancakeCloud.png}"/>
     <form id="pancakeForm"
         method="post"
-        th:action="@{/design}"
-        th:object="${pancake}">
+        th:object="${pancake}"
+        th:action="@{/design}">
+
         <div class="grid">
             <div class="ingredient-group" id="wraps">
                 <h3>designate you wrap:</h3>
