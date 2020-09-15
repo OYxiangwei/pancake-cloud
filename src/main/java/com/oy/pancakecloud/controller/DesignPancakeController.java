@@ -2,16 +2,23 @@ package com.oy.pancakecloud.controller;
 
 import com.oy.pancakecloud.pancake.Ingredient;
 import com.oy.pancakecloud.pancake.Pancake;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.oy.pancakecloud.pancake.Ingredient.Type;
+
+
 import java.util.Arrays;
 import java.util.List;
+
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -20,7 +27,7 @@ import java.util.stream.Collectors;
 public class DesignPancakeController {
     @ModelAttribute
     public void addIngredientsToPancake(Model model){
-        List<Ingredient> ingredients = Arrays.asList(new Ingredient("FLTO","Flour Tortilla", Ingredient.Type.WRAP),
+        List<Ingredient> ingredients = Arrays.asList(new Ingredient("FLTO","Flour Tortilla", Type.WRAP),
                 new Ingredient("COTO", "Corn Tortilla", Type.WRAP),
                 new Ingredient("GRBF", "Ground Beef", Type.PROTEIN),
                 new Ingredient("CARN", "Carnitas", Type.PROTEIN),
@@ -40,6 +47,14 @@ public class DesignPancakeController {
     public String showDesignForm(Model model){
         model.addAttribute("design",new Pancake());
         return "design";
+    }
+    @PostMapping
+    public String processDesign(@Validated @ModelAttribute("design") Pancake design, Errors errors,Model model){
+        if(errors.hasErrors()){
+            return "design";
+        }
+        //log.info("Processing design: " + design);
+        return "redirect:/orders/current";
     }
 
     private List<Ingredient> filterByType(List<Ingredient> ingredients,Type type) {
