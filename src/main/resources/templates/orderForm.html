@@ -6,7 +6,7 @@
     <link rel="stylesheet" th:href="@{/images/styles.css}">
 </head>
 <body>
-    <form id="orderForm" method="post" th:action="@{/orders}" th:object="${orders}">
+    <form id="orderForm" method="post" th:action="@{/orders}" th:object="${order}">
         <h1> Order your pancake creation</h1>
         <img th:src="@{/images/PancakeCloud.png}"/>
         <a th:href="@{/design}" id="another">design another pancake</a><br/>
@@ -16,17 +16,19 @@
         <h3> Deliver my pancake masterpieces to ...</h3>
         <label for="name">Name:</label>
         <input type="text" th:field="*{name}"/>
+        <span class="validationError" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</span>
         <br/>
 
         <label for="street">street address</label>
         <input type="text" th:field="*{street}"/>
+        <span class="validationError" th:if="${#fields.hasErrors('street')}" th:errors="*{street}">street Error</span>
         <br/>
         <label for="city">City: </label>
         <input type="text" th:field="*{city}" />
         <br />
 
-        <label for="state">State: </label>
-        <input type="text" th:field="*{state}" />
+        <label for="status">Status: </label>
+        <input type="text" th:field="*{status}" />
         <br />
 
         <label for="zip">Zip code: </label>
@@ -45,7 +47,7 @@
         <label for="ccCVV">CVV: </label>
         <input type="text" th:field="*{ccCVV}" />
         <br />
-        <input type="submit" th:value="submit your order"/>
+        <input type="submit" value="submit your order"/>
     </form>
 </body>
 </html>
