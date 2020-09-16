@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.oy.pancakecloud.pancake.Ingredient.Type;
 
 
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 
@@ -49,7 +50,7 @@ public class DesignPancakeController {
         return "design";
     }
     @PostMapping
-    public String processDesign(@Validated @ModelAttribute("design") Pancake design, Errors errors,Model model){
+    public String processDesign(@Valid @ModelAttribute("design") Pancake design, Errors errors, Model model){
         if(errors.hasErrors()){
             return "design";
         }

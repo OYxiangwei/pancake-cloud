@@ -13,6 +13,7 @@
         th:object="${design}"
         th:action="@{/design}">
 
+        <span class="validationError" th:if="${#fields.hasErrors('ingredients')}" th:errors="*{ingredients}">ingredient Error</span>
         <div class="grid">
             <div class="ingredient-group" id="wraps">
                 <h3>designate you wrap:</h3>
