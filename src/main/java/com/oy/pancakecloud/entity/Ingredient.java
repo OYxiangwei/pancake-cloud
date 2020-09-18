@@ -1,7 +1,4 @@
-package com.oy.pancakecloud.pancake;
-
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+package com.oy.pancakecloud.entity;
 
 import java.util.Objects;
 

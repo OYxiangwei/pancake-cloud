@@ -1,6 +1,6 @@
 package com.oy.pancakecloud.controller;
 
-import com.oy.pancakecloud.pancake.Orders;
+import com.oy.pancakecloud.entity.Orders;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.stereotype.Controller;
