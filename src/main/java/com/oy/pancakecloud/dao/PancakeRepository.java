@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import javax.transaction.Transactional;
 
 @Transactional
-public interface PancakeRepository extends CrudRepository<Pancake, Long>{
+public interface PancakeRepository extends CrudRepository<Pancake,Long>{
 }
